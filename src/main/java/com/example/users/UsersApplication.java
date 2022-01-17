@@ -1,5 +1,6 @@
 package com.example.users;
 
+import java.util.Scanner;
 import com.example.users.users.TableUser;
 import com.example.users.users.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +18,14 @@ public class UsersApplication {
 
 	@PostConstruct
 	public void initialData(){
-		TableUser tableUser = new TableUser(1, "Sssssstroa", "t.sappalunn@gmail.com");
+		Scanner scanner = new Scanner(System.in);
+		System.out.print("Enter your name: ");
+		String username = scanner.next();
+
+		System.out.print("Enter your email: ");
+		String email = scanner.next();
+		TableUser tableUser = new TableUser(1, username, email);
+
 		userRepository.save(tableUser);
 	}
 	public static void main(String[] args) {
